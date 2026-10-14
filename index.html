@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#134B5F">
+  <meta name="description" content="kim · 주인장의 디지털 명함. 연락처는 가상 정보입니다.">
+  <title>kim · 디지털 명함</title>
+  <style>
+    :root { --teal:#134B5F; --orange:#D9741F; --ink:#1E2A30; --muted:#6B7A80; --line:#D5DDE0; --light:#EEF3F5; --paper:#F5F7F8; }
+    * { box-sizing:border-box; }
+    body { margin:0; background:var(--paper); color:var(--ink); font-family:"Malgun Gothic","Apple SD Gothic Neo",sans-serif; line-height:1.65; word-break:keep-all; }
+    main { width:min(100%,460px); margin:0 auto; padding:44px 24px 28px; background:white; min-height:100svh; }
+    p,h1,h2,dl,dd { margin:0; }
+    a { color:var(--teal); text-underline-offset:4px; }
+    button,a { -webkit-tap-highlight-color:transparent; }
+    button { font:inherit; cursor:pointer; }
+    button:focus-visible,a:focus-visible,input:focus-visible { outline:3px solid var(--teal); outline-offset:4px; }
+    .kicker { color:var(--orange); font-size:12px; font-weight:700; letter-spacing:.12em; }
+    h1 { font-size:52px; line-height:1.2; font-weight:700; letter-spacing:-.045em; margin-top:15px; }
+    .role { color:var(--muted); font-size:17px; margin-top:9px; }
+    .intro { margin-top:24px; font-size:21px; }
+    section { margin-top:32px; }
+    h2 { color:var(--teal); font-size:16px; font-weight:700; margin-bottom:14px; }
+    .work { background:var(--light); padding:18px 20px; }
+    .work h2 { font-size:12px; margin-bottom:4px; }
+    .work p { font-size:18px; }
+    .details { margin-bottom:20px; }
+    .details>div { display:grid; grid-template-columns:48px minmax(0,1fr); gap:12px; padding:10px 0; }
+    dt { color:var(--muted); font-size:13px; padding-top:3px; }
+    dd { font-size:16px; min-width:0; overflow-wrap:anywhere; }
+    .email { user-select:all; }
+    .actions { display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr); gap:10px; }
+    .action { min-height:48px; display:flex; align-items:center; justify-content:center; padding:12px 8px; border:1px solid var(--line); background:white; border-radius:4px; font-size:14px; font-weight:700; text-decoration:none; text-align:center; color:var(--teal); }
+    .action.primary { grid-column:1/-1; background:var(--teal); color:white; border-color:var(--teal); }
+    .action:hover { background:var(--light); }
+    .action.primary:hover { background:#1E2A30; }
+    .status { min-height:24px; margin-top:10px; font-size:13px; color:var(--muted); }
+    .projects { margin-top:22px; }
+    .project { display:flex; align-items:center; justify-content:space-between; gap:12px; min-height:58px; padding:14px 0; border-bottom:1px solid var(--line); text-decoration:none; font-size:16px; }
+    .project span:last-child { font-size:12px; color:var(--muted); flex-shrink:0; }
+    .project:hover { background:var(--paper); }
+    .note { font-size:12px; color:var(--muted); margin-top:10px; }
+    .share { padding-top:24px; border-top:1px solid var(--line); text-align:center; }
+    .share h2 { margin-bottom:6px; }
+    .share p { font-size:13px; color:var(--muted); }
+    #qr { width:200px; min-height:200px; max-width:100%; margin:15px auto 8px; display:grid; place-items:center; background:white; }
+    #qr img { display:block; width:200px; height:200px; max-width:100%; object-fit:contain; image-rendering:pixelated; }
+    #qr .qr-error { font-size:13px; padding:15px; }
+    .page-address { display:block; font-size:11px; line-height:1.6; color:var(--muted); overflow-wrap:anywhere; word-break:break-all; }
+    #local-note { margin-top:12px; font-size:12px; }
+    footer { border-top:1px solid var(--line); margin-top:28px; padding-top:20px; text-align:center; color:var(--muted); font-size:12px; }
+    [hidden] { display:none!important; }
+    @media(max-width:350px) { main { padding:32px 20px 24px; } .action { font-size:13px; } }
+
+    /* 아이돌 스타일 사진을 넣은 명함 */
+    main { padding-top:0; }
+    .portrait { display:block; width:calc(100% + 48px); max-width:none; height:auto; aspect-ratio:1; object-fit:cover; margin:0 -24px; }
+    .identity { padding-top:28px; }
+    h1 { font-size:44px; margin-top:10px; }
+    .role { margin-top:6px; }
+    .intro { margin-top:16px; }
+    @media(max-width:350px) { main { padding-top:0; } .portrait { width:calc(100% + 40px); margin-left:-20px; margin-right:-20px; } }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <img class="portrait" src="profile-kim-idol-stage.png" width="1254" height="1254" alt="긴 웨이브 헤어와 크리스털 무대 의상을 입은 가상 여성 프로필 이미지" fetchpriority="high">
+      <div class="identity">
+      <p class="kicker">디지털 명함</p>
+      <h1>kim</h1>
+      <p class="role">주인장</p>
+      <p class="intro">릴</p>
+      </div>
+    </header>
+
+    <section class="work" aria-labelledby="work-title">
+      <h2 id="work-title">담당 업무</h2>
+      <p>전부</p>
+    </section>
+
+    <section aria-labelledby="contact-title">
+      <h2 id="contact-title">연락처</h2>
+      <dl class="details">
+        <div><dt>전화</dt><dd><a href="tel:01000000000">010-0000-0000</a></dd></div>
+        <div><dt>메일</dt><dd class="email" id="email-address">닉네임@example.com</dd></div>
+      </dl>
+      <div class="actions">
+        <a class="action primary" id="save-contact" download="kim.vcf" href="data:text/vcard;charset=utf-8,BEGIN%3AVCARD%0D%0AVERSION%3A3.0%0D%0AFN%3Akim%0D%0AN%3Akim%3B%3B%3B%3B%0D%0ATITLE%3A%EC%A3%BC%EC%9D%B8%EC%9E%A5%0D%0ATEL%3BTYPE%3DCELL%3A010-0000-0000%0D%0AEMAIL%3A%EB%8B%89%EB%84%A4%EC%9E%84%40example.com%0D%0ANOTE%3A%EC%97%B0%EB%9D%BD%EC%B2%98%EB%8A%94%20%EA%B0%80%EC%83%81%20%EC%A0%95%EB%B3%B4%0D%0AEND%3AVCARD%0D%0A">연락처 저장 <span aria-hidden="true">&nbsp;(vcf)</span></a>
+        <a class="action" href="tel:01000000000">전화 걸기</a>
+        <button class="action" id="copy-email" type="button">메일 주소 복사</button>
+      </div>
+      <p id="status" class="status" role="status" aria-live="polite"></p>
+      <noscript><p class="note">메일 주소를 길게 눌러 복사할 수 있습니다. QR 코드에는 JavaScript가 필요합니다.</p></noscript>
+    </section>
+
+    <section class="projects" aria-labelledby="projects-title">
+      <h2 id="projects-title">내가 만든 것</h2>
+      <a class="project" href="lotto.html"><span>로또 번호 추첨기</span><span>열기</span></a>
+      <a class="project" href="csv-tool.html" aria-describedby="csv-note"><span>CSV 도구</span><span>열기</span></a>
+      <p class="note" id="csv-note">CSV 도구는 csv-tool.html 파일을 이 폴더에 추가하면 열립니다.</p>
+    </section>
+
+    <section class="share" aria-labelledby="share-title">
+      <h2 id="share-title">명함 공유</h2>
+      <p>QR 코드를 스캔하면 이 페이지로 연결됩니다.</p>
+      <div id="qr" aria-label="현재 페이지 주소의 QR 코드"><p class="qr-error">QR 코드를 준비하고 있습니다.</p></div>
+      <a id="page-address" class="page-address"></a>
+      <p id="local-note" hidden></p>
+    </section>
+    <footer>연락처는 가상 정보</footer>
+  </main>
+
+  <!-- QR은 외부 생성 API로 보내지 않고 브라우저에서 생성합니다. -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcode-generator/1.4.4/qrcode.min.js" defer referrerpolicy="no-referrer"></script>
+  <script>
+    'use strict';
+    const email = document.getElementById('email-address').textContent.trim();
+    const status = document.getElementById('status');
+    const vcard = [
+      'BEGIN:VCARD', 'VERSION:3.0', 'N:kim;;;;', 'FN:kim', 'NICKNAME:kim',
+      'TITLE:주인장', 'TEL;TYPE=CELL:010-0000-0000', 'EMAIL;TYPE=INTERNET:' + email,
+      'NOTE:담당 업무 전부 / 한 줄 소개 릴 / 연락처는 가상 정보', 'END:VCARD', ''
+    ].join('\r\n');
+    document.getElementById('save-contact').href = 'data:text/vcard;charset=utf-8,' + encodeURIComponent(vcard);
+
+    function legacyCopy() {
+      const field = document.createElement('textarea');
+      field.value = email;
+      field.readOnly = true;
+      field.style.cssText = 'position:fixed;top:0;left:0;width:1px;height:1px;opacity:0;font-size:16px;';
+      document.body.append(field);
+      field.focus(); field.select(); field.setSelectionRange(0, field.value.length);
+      let copied = false;
+      try { copied = document.execCommand('copy'); } catch (_) {}
+      field.remove();
+      return copied;
+    }
+    document.getElementById('copy-email').addEventListener('click', async () => {
+      let copied = false;
+      try {
+        if (navigator.clipboard && window.isSecureContext) {
+          await navigator.clipboard.writeText(email);
+          copied = true;
+        }
+      } catch (_) {}
+      if (!copied) copied = legacyCopy();
+      status.textContent = copied ? '메일 주소를 복사했습니다.' : '복사할 수 없습니다. 위 메일 주소를 길게 눌러 복사해 주세요.';
+      document.getElementById('copy-email').focus({preventScroll:true});
+    });
+    document.getElementById('save-contact').addEventListener('click', () => {
+      status.textContent = '내려받은 kim.vcf 파일을 열어 연락처에 추가해 주세요.';
+    });
+
+    const pageUrl = window.location.href;
+    const address = document.getElementById('page-address');
+    address.textContent = pageUrl;
+    address.href = pageUrl;
+    const localNote = document.getElementById('local-note');
+    if (location.protocol === 'file:') {
+      localNote.hidden = false;
+      localNote.textContent = 'PC에서 연 파일 주소는 다른 휴대폰에서 열 수 없습니다. 웹에 게시한 뒤 QR 코드를 이용해 주세요.';
+    } else if (['localhost','127.0.0.1','[::1]'].includes(location.hostname)) {
+      localNote.hidden = false;
+      localNote.textContent = '현재는 이 기기에서 보는 미리보기 주소입니다. 웹에 게시하면 공유할 주소의 QR 코드로 바뀝니다.';
+    }
+    window.addEventListener('DOMContentLoaded', () => {
+      const target = document.getElementById('qr');
+      try {
+        if (typeof qrcode !== 'function') throw new Error('QR library unavailable');
+        const qr = qrcode(0, 'M');
+        qr.addData(pageUrl);
+        qr.make();
+        const img = document.createElement('img');
+        img.src = qr.createDataURL(4, 16);
+        img.alt = '이 페이지 주소의 QR 코드';
+        img.width = 200; img.height = 200;
+        target.replaceChildren(img);
+      } catch (_) {
+        const message = document.createElement('p');
+        message.className = 'qr-error';
+        message.textContent = 'QR 코드를 불러오지 못했습니다. 인터넷 연결을 확인한 뒤 새로고침하거나 아래 주소를 이용해 주세요.';
+        target.replaceChildren(message);
+      }
+    });
+  </script>
+</body>
+</html>
